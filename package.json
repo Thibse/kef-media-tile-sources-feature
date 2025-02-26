@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "watch": "parcel watch",
+    "build": "parcel build"
+  },
+  "devDependencies": {
+    "parcel": "^2.13.3"
+  },
+  "source": "src/sourcesTileFeature.js",
+  "module": "dist/sourcesTileFeature.js",
+  "targets": {
+    "module": {
+      "includeNodeModules": true
+    }
+  },
+  "dependencies": {
+    "lit": "^3.2.1"
+  }
+}
