@@ -609,10 +609,10 @@ const $ab210b2da7b39b9d$export$f5c524615a7708d6 = {
 
 
 
-const $313aa580d9880290$var$supportsMediaPlayerKefSourceFeature = ()=>{
-    return true;
+const $313aa580d9880290$var$supportsMediaPlayerKefSourceFeature = (stateObj)=>{
+    const domain = stateObj.entity_id.split(".")[0];
+    return domain === "media_player";
 };
-let $313aa580d9880290$var$currentSource = "wifi";
 const $313aa580d9880290$var$sources = {
     "wifi": {
         icon: "mdi:wifi"
@@ -650,27 +650,31 @@ class $313aa580d9880290$var$MediaSourcesTileCardFeature extends (0, $ab210b2da7b
     }
     _powerOff(ev) {
         ev.stopPropagation();
-        console.log("poweroff!");
-    }
-    _switchSource(ev, source) {
-        ev.stopPropagation();
-        $313aa580d9880290$var$currentSource = source;
-        this.hass.callService("input_button", "press", {
+        this.hass.callService("media_player", "turn_off", {
             entity_id: this.stateObj.entity_id
         });
     }
+    _switchSource(ev, source) {
+        ev.stopPropagation();
+        this.hass.callService("media_player", "select_source", {
+            entity_id: this.stateObj.entity_id,
+            source: source
+        });
+    }
     render() {
+        if (!this.config || !this.hass || !this.stateObj || !$313aa580d9880290$var$supportsMediaPlayerKefSourceFeature(this.stateObj)) return null;
         const selectableSources = this.config.source_list ?? Object.keys($313aa580d9880290$var$sources);
+        const currentSource = this.stateObj.attributes.source ?? this.stateObj.state ?? "undefined";
         return (0, $f58f44579a4747ac$export$c0bb0b647f701bb5)`
       <div class="select">
         ${selectableSources.filter((key)=>$313aa580d9880290$var$sources[key]).map((key)=>{
             return (0, $f58f44579a4747ac$export$c0bb0b647f701bb5)`
-            <div id="option-${key}" @click="${(ev)=>this._switchSource(ev, key)}" class="option ${$313aa580d9880290$var$currentSource == key ? "selected" : ""}">
+            <div id="option-${key}" @click="${(ev)=>this._switchSource(ev, key)}" class="option ${currentSource == key ? "selected" : ""}">
               <ha-icon class="icon" icon=${$313aa580d9880290$var$sources[key].icon}></ha-icon>
             </div>
           `;
         })}
-        <div id = "option-off" @click="${this._powerOff}" class="option ${$313aa580d9880290$var$currentSource == "off" ? "selected" : ""}" >
+        <div id = "option-off" @click="${this._powerOff}" class="option ${currentSource == "off" ? "selected" : ""}" >
           <ha-icon class="icon" icon="mdi:power"></ha-icon>
         </div>
       </div>

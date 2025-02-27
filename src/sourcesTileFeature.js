@@ -1,10 +1,10 @@
 import { LitElement, html, css } from "lit";
 
-const supportsMediaPlayerKefSourceFeature = () => {
-  return true;
+const supportsMediaPlayerKefSourceFeature = (stateObj) => {
+  const domain = stateObj.entity_id.split(".")[0];
+  return domain === "media_player";
 };
 
-let currentSource = "wifi"
 const sources = {
   "wifi": { icon: "mdi:wifi" },
   "bluetooth": { icon: "mdi:bluetooth" },
@@ -39,18 +39,34 @@ class MediaSourcesTileCardFeature extends LitElement {
   _powerOff(ev) {
     ev.stopPropagation();
 
-    console.log("poweroff!");
+    this.hass.callService("media_player", "turn_off", {
+      entity_id: this.stateObj.entity_id,
+    })
   }
 
   _switchSource(ev, source) {
     ev.stopPropagation();
 
-    currentSource = source;
-    this.hass.callService("input_button", "press", { entity_id: this.stateObj.entity_id });
+    this.hass.callService("media_player", "select_source", {
+      entity_id: this.stateObj.entity_id,
+      source,
+    });
   }
 
   render() {
+    if (
+      !this.config ||
+      !this.hass ||
+      !this.stateObj ||
+      !supportsMediaPlayerKefSourceFeature(this.stateObj)
+    ) {
+      return null;
+    }
+
     const selectableSources = this.config.source_list ?? Object.keys(sources);
+    const currentSource = this.stateObj.attributes.source ??
+      this.stateObj.state ??
+      "undefined";
 
     return html`
       <div class="select">
