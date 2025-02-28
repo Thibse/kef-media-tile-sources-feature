@@ -2,6 +2,8 @@
 
 Easily switch between your KEF speaker’s input sources—Bluetooth, Optical, AUX, and more—right from your Home Assistant dashboard.
 
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
+
 ## Preview
 
 <img src="assets/kef_speaker_tile_card.png" width="500" />
