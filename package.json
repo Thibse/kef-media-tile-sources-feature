@@ -4,7 +4,7 @@
     "build": "parcel build"
   },
   "devDependencies": {
-    "parcel": "^2.13.3"
+    "parcel": "2.13.3"
   },
   "source": "src/sourcesTileFeature.js",
   "module": "dist/sourcesTileFeature.js",
