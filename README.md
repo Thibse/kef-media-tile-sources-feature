@@ -6,7 +6,7 @@ Easily switch between your KEF speaker’s input sources—Bluetooth, Optical, A
 
 ## Preview
 
-<img src="assets/kef_speaker_tile_card.png" width="500" />
+![image](assets/kef_speaker_tile_card.png)
 
 ## Configure
 
