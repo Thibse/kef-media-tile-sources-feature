@@ -1,24 +1,21 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:best-practices"
+    "config:best-practices",
+    ":automergeStableNonMajor",
+    ":automergeDigest"
   ],
-  "commitMessageAction": "update",
-  "commitMessagePrefix": "⬆️",
+  "semanticCommits": "enabled",
   "packageRules": [
     {
-      "matchUpdateTypes": [
-        "pin"
-      ],
-      "commitMessagePrefix": "📌",
-      "commitMessageAction": "Pin"
+      "matchPackageNames": ["parcel", "lit"],
+      "matchUpdateTypes": ["major", "minor"],
+      "semanticCommitType": "build"
     },
     {
-      "matchUpdateTypes": [
-        "rollback"
-      ],
-      "commitMessagePrefix": "⬇️",
-      "commitMessageAction": "Downgrade"
+      "matchPackageNames": ["parcel", "lit"],
+      "matchUpdateTypes": ["patch"],
+      "semanticCommitType": "fix"
     }
   ]
 }
