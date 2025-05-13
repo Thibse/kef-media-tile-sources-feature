@@ -1,0 +1,21 @@
+name: code build
+on: pull_request
+
+jobs:
+  build:
+    name: Build 📦
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: "Install Node"
+      uses: actions/setup-node@v4
+      with:
+        node-version: 'lts/*'
+    - name: "Install Deps"
+      run: npm ci
+    - name: "Build"
+      run: npm run build
