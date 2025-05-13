@@ -1,4 +1,5 @@
 {
+  "name": "kef-media-tile-sources-feature",
   "scripts": {
     "watch": "parcel watch",
     "build": "parcel build"
