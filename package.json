@@ -4,6 +4,9 @@
     "build": "parcel build"
   },
   "devDependencies": {
+    "@semantic-release/exec": "^7.1.0",
+    "@semantic-release/git": "^10.0.1",
+    "conventional-changelog-conventionalcommits": "^8.0.0",
     "parcel": "2.13.3"
   },
   "source": "src/sourcesTileFeature.js",
