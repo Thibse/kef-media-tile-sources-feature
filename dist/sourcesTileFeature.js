@@ -45,7 +45,7 @@ const $def2de46b9306e8a$export$8d80f9cac07cdb3 = (t)=>new $def2de46b9306e8a$expo
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */ const { is: $19fe8e3abedf4df0$var$i, defineProperty: $19fe8e3abedf4df0$var$e, getOwnPropertyDescriptor: $19fe8e3abedf4df0$var$r, getOwnPropertyNames: $19fe8e3abedf4df0$var$h, getOwnPropertySymbols: $19fe8e3abedf4df0$var$o, getPrototypeOf: $19fe8e3abedf4df0$var$n } = Object, $19fe8e3abedf4df0$var$a = globalThis, $19fe8e3abedf4df0$var$c = $19fe8e3abedf4df0$var$a.trustedTypes, $19fe8e3abedf4df0$var$l = $19fe8e3abedf4df0$var$c ? $19fe8e3abedf4df0$var$c.emptyScript : "", $19fe8e3abedf4df0$var$p = $19fe8e3abedf4df0$var$a.reactiveElementPolyfillSupport, $19fe8e3abedf4df0$var$d = (t, s)=>t, $19fe8e3abedf4df0$export$7312b35fbf521afb = {
+ */ const { is: $19fe8e3abedf4df0$var$i, defineProperty: $19fe8e3abedf4df0$var$e, getOwnPropertyDescriptor: $19fe8e3abedf4df0$var$h, getOwnPropertyNames: $19fe8e3abedf4df0$var$r, getOwnPropertySymbols: $19fe8e3abedf4df0$var$o, getPrototypeOf: $19fe8e3abedf4df0$var$n } = Object, $19fe8e3abedf4df0$var$a = globalThis, $19fe8e3abedf4df0$var$c = $19fe8e3abedf4df0$var$a.trustedTypes, $19fe8e3abedf4df0$var$l = $19fe8e3abedf4df0$var$c ? $19fe8e3abedf4df0$var$c.emptyScript : "", $19fe8e3abedf4df0$var$p = $19fe8e3abedf4df0$var$a.reactiveElementPolyfillSupport, $19fe8e3abedf4df0$var$d = (t, s)=>t, $19fe8e3abedf4df0$export$7312b35fbf521afb = {
     toAttribute (t, s) {
         switch(s){
             case Boolean:
@@ -76,11 +76,12 @@ const $def2de46b9306e8a$export$8d80f9cac07cdb3 = (t)=>new $def2de46b9306e8a$expo
         }
         return i;
     }
-}, $19fe8e3abedf4df0$export$53a6892c50694894 = (t, s)=>!$19fe8e3abedf4df0$var$i(t, s), $19fe8e3abedf4df0$var$y = {
+}, $19fe8e3abedf4df0$export$53a6892c50694894 = (t, s)=>!$19fe8e3abedf4df0$var$i(t, s), $19fe8e3abedf4df0$var$b = {
     attribute: !0,
     type: String,
     converter: $19fe8e3abedf4df0$export$7312b35fbf521afb,
     reflect: !1,
+    useDefault: !1,
     hasChanged: $19fe8e3abedf4df0$export$53a6892c50694894
 };
 Symbol.metadata ??= Symbol("metadata"), $19fe8e3abedf4df0$var$a.litPropertyMetadata ??= new WeakMap;
@@ -93,14 +94,14 @@ class $19fe8e3abedf4df0$export$c7c07a37856565d extends HTMLElement {
             ...this._$Eh.keys()
         ];
     }
-    static createProperty(t, s = $19fe8e3abedf4df0$var$y) {
-        if (s.state && (s.attribute = !1), this._$Ei(), this.elementProperties.set(t, s), !s.noAccessor) {
-            const i = Symbol(), r = this.getPropertyDescriptor(t, i, s);
-            void 0 !== r && $19fe8e3abedf4df0$var$e(this.prototype, t, r);
+    static createProperty(t, s = $19fe8e3abedf4df0$var$b) {
+        if (s.state && (s.attribute = !1), this._$Ei(), this.prototype.hasOwnProperty(t) && ((s = Object.create(s)).wrapped = !0), this.elementProperties.set(t, s), !s.noAccessor) {
+            const i = Symbol(), h = this.getPropertyDescriptor(t, i, s);
+            void 0 !== h && $19fe8e3abedf4df0$var$e(this.prototype, t, h);
         }
     }
     static getPropertyDescriptor(t, s, i) {
-        const { get: e, set: h } = $19fe8e3abedf4df0$var$r(this.prototype, t) ?? {
+        const { get: e, set: r } = $19fe8e3abedf4df0$var$h(this.prototype, t) ?? {
             get () {
                 return this[s];
             },
@@ -109,19 +110,17 @@ class $19fe8e3abedf4df0$export$c7c07a37856565d extends HTMLElement {
             }
         };
         return {
-            get () {
-                return e?.call(this);
-            },
+            get: e,
             set (s) {
-                const r = e?.call(this);
-                h.call(this, s), this.requestUpdate(t, r, i);
+                const h = e?.call(this);
+                r?.call(this, s), this.requestUpdate(t, h, i);
             },
             configurable: !0,
             enumerable: !0
         };
     }
     static getPropertyOptions(t) {
-        return this.elementProperties.get(t) ?? $19fe8e3abedf4df0$var$y;
+        return this.elementProperties.get(t) ?? $19fe8e3abedf4df0$var$b;
     }
     static _$Ei() {
         if (this.hasOwnProperty($19fe8e3abedf4df0$var$d("elementProperties"))) return;
@@ -134,7 +133,7 @@ class $19fe8e3abedf4df0$export$c7c07a37856565d extends HTMLElement {
         if (this.hasOwnProperty($19fe8e3abedf4df0$var$d("finalized"))) return;
         if (this.finalized = !0, this._$Ei(), this.hasOwnProperty($19fe8e3abedf4df0$var$d("properties"))) {
             const t = this.properties, s = [
-                ...$19fe8e3abedf4df0$var$h(t),
+                ...$19fe8e3abedf4df0$var$r(t),
                 ...$19fe8e3abedf4df0$var$o(t)
             ];
             for (const i of s)this.createProperty(i, t[i]);
@@ -194,33 +193,34 @@ class $19fe8e3abedf4df0$export$c7c07a37856565d extends HTMLElement {
     attributeChangedCallback(t, s, i) {
         this._$AK(t, i);
     }
-    _$EC(t, s) {
+    _$ET(t, s) {
         const i = this.constructor.elementProperties.get(t), e = this.constructor._$Eu(t, i);
         if (void 0 !== e && !0 === i.reflect) {
-            const r = (void 0 !== i.converter?.toAttribute ? i.converter : $19fe8e3abedf4df0$export$7312b35fbf521afb).toAttribute(s, i.type);
-            this._$Em = t, null == r ? this.removeAttribute(e) : this.setAttribute(e, r), this._$Em = null;
+            const h = (void 0 !== i.converter?.toAttribute ? i.converter : $19fe8e3abedf4df0$export$7312b35fbf521afb).toAttribute(s, i.type);
+            this._$Em = t, null == h ? this.removeAttribute(e) : this.setAttribute(e, h), this._$Em = null;
         }
     }
     _$AK(t, s) {
         const i = this.constructor, e = i._$Eh.get(t);
         if (void 0 !== e && this._$Em !== e) {
-            const t = i.getPropertyOptions(e), r = "function" == typeof t.converter ? {
+            const t = i.getPropertyOptions(e), h = "function" == typeof t.converter ? {
                 fromAttribute: t.converter
             } : void 0 !== t.converter?.fromAttribute ? t.converter : $19fe8e3abedf4df0$export$7312b35fbf521afb;
-            this._$Em = e, this[e] = r.fromAttribute(s, t.type), this._$Em = null;
+            this._$Em = e, this[e] = h.fromAttribute(s, t.type) ?? this._$Ej?.get(e) ?? null, this._$Em = null;
         }
     }
     requestUpdate(t, s, i) {
         if (void 0 !== t) {
-            if (i ??= this.constructor.getPropertyOptions(t), !(i.hasChanged ?? $19fe8e3abedf4df0$export$53a6892c50694894)(this[t], s)) return;
-            this.P(t, s, i);
+            const e = this.constructor, h = this[t];
+            if (i ??= e.getPropertyOptions(t), !((i.hasChanged ?? $19fe8e3abedf4df0$export$53a6892c50694894)(h, s) || i.useDefault && i.reflect && h === this._$Ej?.get(t) && !this.hasAttribute(e._$Eu(t, i)))) return;
+            this.C(t, s, i);
         }
-        !1 === this.isUpdatePending && (this._$ES = this._$ET());
+        !1 === this.isUpdatePending && (this._$ES = this._$EP());
     }
-    P(t, s, i) {
-        this._$AL.has(t) || this._$AL.set(t, s), !0 === i.reflect && this._$Em !== t && (this._$Ej ??= new Set).add(t);
+    C(t, s, { useDefault: i, reflect: e, wrapped: h }, r) {
+        i && !(this._$Ej ??= new Map).has(t) && (this._$Ej.set(t, r ?? s ?? this[t]), !0 !== h || void 0 !== r) || (this._$AL.has(t) || (this.hasUpdated || i || (s = void 0), this._$AL.set(t, s)), !0 === e && this._$Em !== t && (this._$Eq ??= new Set).add(t));
     }
-    async _$ET() {
+    async _$EP() {
         this.isUpdatePending = !0;
         try {
             await this._$ES;
@@ -241,14 +241,17 @@ class $19fe8e3abedf4df0$export$c7c07a37856565d extends HTMLElement {
                 this._$Ep = void 0;
             }
             const t = this.constructor.elementProperties;
-            if (t.size > 0) for (const [s, i] of t)!0 !== i.wrapped || this._$AL.has(s) || void 0 === this[s] || this.P(s, this[s], i);
+            if (t.size > 0) for (const [s, i] of t){
+                const { wrapped: t } = i, e = this[s];
+                !0 !== t || this._$AL.has(s) || void 0 === e || this.C(s, void 0, i, e);
+            }
         }
         let t = !1;
         const s = this._$AL;
         try {
-            t = this.shouldUpdate(s), t ? (this.willUpdate(s), this._$EO?.forEach((t)=>t.hostUpdate?.()), this.update(s)) : this._$EU();
+            t = this.shouldUpdate(s), t ? (this.willUpdate(s), this._$EO?.forEach((t)=>t.hostUpdate?.()), this.update(s)) : this._$EM();
         } catch (s) {
-            throw t = !1, this._$EU(), s;
+            throw t = !1, this._$EM(), s;
         }
         t && this._$AE(s);
     }
@@ -256,7 +259,7 @@ class $19fe8e3abedf4df0$export$c7c07a37856565d extends HTMLElement {
     _$AE(t) {
         this._$EO?.forEach((t)=>t.hostUpdated?.()), this.hasUpdated || (this.hasUpdated = !0, this.firstUpdated(t)), this.updated(t);
     }
-    _$EU() {
+    _$EM() {
         this._$AL = new Map, this.isUpdatePending = !1;
     }
     get updateComplete() {
@@ -269,7 +272,7 @@ class $19fe8e3abedf4df0$export$c7c07a37856565d extends HTMLElement {
         return !0;
     }
     update(t) {
-        this._$Ej &&= this._$Ej.forEach((t)=>this._$EC(t, this[t])), this._$EU();
+        this._$Eq &&= this._$Eq.forEach((t)=>this._$ET(t, this[t])), this._$EM();
     }
     updated(t) {}
     firstUpdated(t) {}
@@ -278,7 +281,7 @@ $19fe8e3abedf4df0$export$c7c07a37856565d.elementStyles = [], $19fe8e3abedf4df0$e
     mode: "open"
 }, $19fe8e3abedf4df0$export$c7c07a37856565d[$19fe8e3abedf4df0$var$d("elementProperties")] = new Map, $19fe8e3abedf4df0$export$c7c07a37856565d[$19fe8e3abedf4df0$var$d("finalized")] = new Map, $19fe8e3abedf4df0$var$p?.({
     ReactiveElement: $19fe8e3abedf4df0$export$c7c07a37856565d
-}), ($19fe8e3abedf4df0$var$a.reactiveElementVersions ??= []).push("2.0.4");
+}), ($19fe8e3abedf4df0$var$a.reactiveElementVersions ??= []).push("2.1.0");
 
 
 /**
@@ -542,7 +545,7 @@ const $f58f44579a4747ac$export$8613d1ca9052b22e = {
     B: $f58f44579a4747ac$var$H,
     F: $f58f44579a4747ac$var$z
 }, $f58f44579a4747ac$var$j = $f58f44579a4747ac$var$t.litHtmlPolyfillSupport;
-$f58f44579a4747ac$var$j?.($f58f44579a4747ac$var$N, $f58f44579a4747ac$var$R), ($f58f44579a4747ac$var$t.litHtmlVersions ??= []).push("3.2.1");
+$f58f44579a4747ac$var$j?.($f58f44579a4747ac$var$N, $f58f44579a4747ac$var$R), ($f58f44579a4747ac$var$t.litHtmlVersions ??= []).push("3.3.0");
 const $f58f44579a4747ac$export$b3890eb0ae9dca99 = (t, i, s)=>{
     const e = s?.renderBefore ?? i;
     let h = e._$litPart$;
@@ -560,7 +563,8 @@ const $f58f44579a4747ac$export$b3890eb0ae9dca99 = (t, i, s)=>{
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */ class $ab210b2da7b39b9d$export$3f2f9f5909897157 extends (0, $19fe8e3abedf4df0$export$c7c07a37856565d) {
+ */ const $ab210b2da7b39b9d$var$s = globalThis;
+class $ab210b2da7b39b9d$export$3f2f9f5909897157 extends (0, $19fe8e3abedf4df0$export$c7c07a37856565d) {
     constructor(){
         super(...arguments), this.renderOptions = {
             host: this
@@ -571,8 +575,8 @@ const $f58f44579a4747ac$export$b3890eb0ae9dca99 = (t, i, s)=>{
         return this.renderOptions.renderBefore ??= t.firstChild, t;
     }
     update(t) {
-        const s = this.render();
-        this.hasUpdated || (this.renderOptions.isConnected = this.isConnected), super.update(t), this._$Do = (0, $f58f44579a4747ac$export$b3890eb0ae9dca99)(s, this.renderRoot, this.renderOptions);
+        const r = this.render();
+        this.hasUpdated || (this.renderOptions.isConnected = this.isConnected), super.update(t), this._$Do = (0, $f58f44579a4747ac$export$b3890eb0ae9dca99)(r, this.renderRoot, this.renderOptions);
     }
     connectedCallback() {
         super.connectedCallback(), this._$Do?.setConnected(!0);
@@ -584,20 +588,20 @@ const $f58f44579a4747ac$export$b3890eb0ae9dca99 = (t, i, s)=>{
         return 0, $f58f44579a4747ac$export$9c068ae9cc5db4e8;
     }
 }
-$ab210b2da7b39b9d$export$3f2f9f5909897157._$litElement$ = !0, $ab210b2da7b39b9d$export$3f2f9f5909897157["finalized"] = !0, globalThis.litElementHydrateSupport?.({
+$ab210b2da7b39b9d$export$3f2f9f5909897157._$litElement$ = !0, $ab210b2da7b39b9d$export$3f2f9f5909897157["finalized"] = !0, $ab210b2da7b39b9d$var$s.litElementHydrateSupport?.({
     LitElement: $ab210b2da7b39b9d$export$3f2f9f5909897157
 });
-const $ab210b2da7b39b9d$var$i = globalThis.litElementPolyfillSupport;
-$ab210b2da7b39b9d$var$i?.({
+const $ab210b2da7b39b9d$var$o = $ab210b2da7b39b9d$var$s.litElementPolyfillSupport;
+$ab210b2da7b39b9d$var$o?.({
     LitElement: $ab210b2da7b39b9d$export$3f2f9f5909897157
 });
 const $ab210b2da7b39b9d$export$f5c524615a7708d6 = {
-    _$AK: (t, e, s)=>{
-        t._$AK(e, s);
+    _$AK: (t, e, r)=>{
+        t._$AK(e, r);
     },
     _$AL: (t)=>t._$AL
 };
-(globalThis.litElementVersions ??= []).push("4.1.1");
+($ab210b2da7b39b9d$var$s.litElementVersions ??= []).push("4.2.0");
 
 
 /**
