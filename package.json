@@ -8,7 +8,7 @@
     "@semantic-release/exec": "7.1.0",
     "@semantic-release/git": "10.0.1",
     "conventional-changelog-conventionalcommits": "8.0.0",
-    "parcel": "2.15.0"
+    "parcel": "2.15.1"
   },
   "source": "src/sourcesTileFeature.js",
   "module": "dist/sourcesTileFeature.js",
