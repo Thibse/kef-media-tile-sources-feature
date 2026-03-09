@@ -1,10 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:best-practices",
-    ":automergeStableNonMajor",
-    ":automergeDigest"
-  ],
+  "extends": ["config:best-practices", ":automergeMinor", ":automergeDigest"],
   "semanticCommits": "enabled",
   "packageRules": [
     {
