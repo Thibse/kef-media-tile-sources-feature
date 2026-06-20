@@ -547,7 +547,7 @@ const $f58f44579a4747ac$export$8613d1ca9052b22e = {
     B: $f58f44579a4747ac$var$I,
     F: $f58f44579a4747ac$var$Z
 }, $f58f44579a4747ac$var$B = $f58f44579a4747ac$var$t.litHtmlPolyfillSupport;
-$f58f44579a4747ac$var$B?.($f58f44579a4747ac$var$S, $f58f44579a4747ac$var$k), ($f58f44579a4747ac$var$t.litHtmlVersions ??= []).push("3.3.2");
+$f58f44579a4747ac$var$B?.($f58f44579a4747ac$var$S, $f58f44579a4747ac$var$k), ($f58f44579a4747ac$var$t.litHtmlVersions ??= []).push("3.3.3");
 const $f58f44579a4747ac$export$b3890eb0ae9dca99 = (t, i, s)=>{
     const e = s?.renderBefore ?? i;
     let h = e._$litPart$;
