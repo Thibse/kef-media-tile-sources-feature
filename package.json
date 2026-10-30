@@ -5,8 +5,6 @@
     "build": "parcel build"
   },
   "devDependencies": {
-    "@semantic-release/git": "11.0.1",
-    "conventional-changelog-conventionalcommits": "10.4.1",
     "parcel": "2.16.4"
   },
   "source": "src/sourcesTileFeature.js",
@@ -18,88 +16,6 @@
   },
   "dependencies": {
     "lit": "^3.2.1"
-  },
-  "release": {
-    "plugins": [
-      [
-        "@semantic-release/npm",
-        {
-          "npmPublish": false
-        }
-      ],
-      [
-        "@semantic-release/commit-analyzer",
-        {
-          "releaseRules": [
-            {
-              "type": "build",
-              "release": "minor"
-            }
-          ]
-        }
-      ],
-      "@semantic-release/release-notes-generator",
-      [
-        "@semantic-release/git",
-        {
-          "assets": [
-            "dist/**",
-            "package.json",
-            "CHANGELOG.md"
-          ]
-        }
-      ],
-      "@semantic-release/github"
-    ],
-    "preset": "conventionalcommits",
-    "presetConfig": {
-      "types": [
-        {
-          "type": "feat",
-          "section": "Features"
-        },
-        {
-          "type": "fix",
-          "section": "Bug Fixes"
-        },
-        {
-          "type": "perf",
-          "section": "Performance Improvements"
-        },
-        {
-          "type": "revert",
-          "section": "Reverts"
-        },
-        {
-          "type": "docs",
-          "section": "Documentation"
-        },
-        {
-          "type": "style",
-          "section": "Styles"
-        },
-        {
-          "type": "chore",
-          "section": "Miscellaneous Chores"
-        },
-        {
-          "type": "refactor",
-          "section": "Code Refactoring"
-        },
-        {
-          "type": "test",
-          "section": "Tests"
-        },
-        {
-          "type": "build",
-          "section": "Build System"
-        },
-        {
-          "type": "ci",
-          "section": "Continuous Integration"
-        }
-      ]
-    }
   },
   "version": "1.2.7"
 }
