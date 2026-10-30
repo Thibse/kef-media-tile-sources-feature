@@ -26,6 +26,8 @@ jobs:
           node-version: "lts/*"
       - name: "Install Deps"
         run: npm ci
+      - name: "Build Application"
+        run: npm run build
       - name: "Create Release"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
