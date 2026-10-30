@@ -1,0 +1,20 @@
+name: validate release workflow
+
+on: pull_request
+
+jobs:
+  release:
+    name: Validate semantic release
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: "Install Node"
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version: "lts/*"
+      - name: "Run Dry-Run Release"
+        run: npx --package semantic-release@25 --package @semantic-release/git@11 --package conventional-changelog-conventionalcommits@9 semantic-release --dry-run
