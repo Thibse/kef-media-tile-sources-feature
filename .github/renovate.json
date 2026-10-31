@@ -2,6 +2,16 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:best-practices", ":automergeMinor", ":automergeDigest"],
   "semanticCommits": "enabled",
+  "customManagers": [
+    {
+      "customType": "regex",
+      "datasourceTemplate": "npm",
+      "description": "Update CI dependencies used by npx",
+      "managerFilePatterns": ["^\\.github/workflows/[^/]+\\.yml$"],
+      "matchStrings": ["--package\\ssemantic-release@(?<currentValue>.*?)\\s"],
+      "depNameTemplate": "semantic-release"
+    }
+  ],
   "packageRules": [
     {
       "matchPackageNames": ["parcel", "lit"],
