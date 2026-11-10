@@ -8,8 +8,7 @@
       "datasourceTemplate": "npm",
       "description": "Update CI dependencies used by npx",
       "managerFilePatterns": ["^\\.github/workflows/[^/]+\\.yml$"],
-      "matchStrings": ["--package\\ssemantic-release@(?<currentValue>.*?)\\s"],
-      "depNameTemplate": "semantic-release"
+      "matchStrings": ["--package\\s(?<depName>.+?)@(?<currentValue>.*?)\\s"]
     }
   ],
   "packageRules": [
